@@ -1,0 +1,8 @@
+db/*.sqlite3
+log/*.log
+tmp/**/*
+vendor/gems/ruby/1.9.1/gems
+vendor/gems/ruby/1.9.1/specifications
+vendor/gems/ruby/1.9.1/doc
+vendor/gems/ruby/1.9.1/environment.rb
+config/database.yml

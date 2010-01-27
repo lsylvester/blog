@@ -1,0 +1,7 @@
+!!!
+%html
+  %head
+  %body
+    - if admin?
+      = link_to 'Logout', logout_path
+    = yield
