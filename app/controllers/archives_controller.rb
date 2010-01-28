@@ -1,6 +1,6 @@
 class ArchivesController < ApplicationController
   def show
-    @month = Time.utc(params[:year], params[:month])
-    @posts = Post.where(archive_month: @month)
+    @archive = Archive.new(params[:year], params[:month])
+    @posts = @archive.posts
   end
 end

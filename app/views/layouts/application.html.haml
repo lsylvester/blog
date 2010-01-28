@@ -17,7 +17,7 @@
         %h3 Archives
         %ul
           - @archives.each do |archive|
-            %li= link_to "#{archive.month.strftime("%B %y")} (#{archive.posts_count})", archive_path(archive.month.year, archive.month.month)
+            %li= link_to "#{archive.label} (#{archive.posts_count})", archive_path(archive.year, archive.month)
           
       %section.tags
         %h3 Tags

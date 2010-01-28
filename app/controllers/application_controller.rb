@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
   
   def load_archives
-    @archives = Post.archive
+    @archives = Archive.all
   end
   
   before_filter :load_tags, :load_archives
