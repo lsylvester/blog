@@ -17,3 +17,4 @@ gem "rails", "3.0.pre"
 # end
 
 gem "haml"
+gem "RedCloth"
