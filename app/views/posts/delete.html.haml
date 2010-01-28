@@ -1,0 +1,5 @@
+%p Are you sure you want to delete this post?
+- form_for @post, :html => {:method => :delete} do |f| 
+  = f.submit "Yes, delete this post"
+  or
+  = link_to "No, get me out of here", @post

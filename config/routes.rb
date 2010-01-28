@@ -1,10 +1,16 @@
 Blog::Application.routes.draw do |map|
-  resources :posts
+  resources :posts do
+    member do
+      get :delete
+    end
+  end
   resources :tags
   root to: "posts#index"
   get '/login', to: "sessions#new", as: 'login'
   post '/login', to: "sessions#create"
   match '/logout', to: "sessions#destroy", as: 'logout'
+  
+  match '/archives/:year/:month', to: "archives#show", as: 'archive'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

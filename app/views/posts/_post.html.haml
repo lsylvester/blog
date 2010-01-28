@@ -1,4 +1,4 @@
-- div_for post do
+- content_tag_for :article, post do
   %h2= link_to post.title, post
   %p= post.created_at
   = post.content
@@ -8,4 +8,4 @@
   - if admin?
     %p
       = link_to 'Edit', edit_post_path(post)
-      = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
+      = link_to 'Delete', delete_post_path(post)

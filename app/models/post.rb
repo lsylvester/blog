@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
   
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   
   attr_writer :tag_names
@@ -13,10 +13,23 @@ class Post < ActiveRecord::Base
   end
   
   def save_tags
-    self.tags = @tag_names.scan(/\S+/).collect do |tag_name|
+    return unless @tag_names
+    self.tags = @tag_names.scan(/\S+/).uniq.collect do |tag_name|
       Tag.find_or_initialize_by_name tag_name
     end
   end
   
   after_save :save_tags
+  
+  def set_archive_month
+    self.archive_month = (created_at || Time.now).beginning_of_month
+  end
+  
+  before_create :set_archive_month
+  
+  scope :archive, select("archive_month, count(id) as posts_count").group("archive_month")
+  
+  def month
+    archive_month
+  end
 end

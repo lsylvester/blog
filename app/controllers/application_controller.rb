@@ -10,4 +10,14 @@ class ApplicationController < ActionController::Base
   def require_admin
     redirect_to root_path, alert: "Not Authorized" unless admin?
   end
+  
+  def load_tags
+    @tags = Tag.select("tags.*, count(posts.id) as posts_count").joins(:posts).group('tags.id')
+  end
+  
+  def load_archives
+    @archives = Post.archive
+  end
+  
+  before_filter :load_tags, :load_archives
 end

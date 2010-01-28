@@ -1,7 +1,29 @@
 !!!
 %html
   %head
+    %meta{"http-equiv" => "Content-type", content: "text/html;charset=UTF-8"}
+    %title My Blog
+    =# stylesheet_link_tag 'appliction'
+    = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+    = javascript_include_tag 'jquery','application'
   %body
     - if admin?
       = link_to 'Logout', logout_path
+    %header
+      %h1 My Blog
     = yield
+    %aside
+      %section.archives
+        %h3 Archives
+        %ul
+          - @archives.each do |archive|
+            %li= link_to "#{archive.month.strftime("%B %y")} (#{archive.posts_count})", archive_path(archive.month.year, archive.month.month)
+          
+      %section.tags
+        %h3 Tags
+        %ul
+          - @tags.each do |tag|
+            %li= link_to "#{tag.name} (#{tag.posts_count})", tag
+    %footer
+      © copyright
+      = Date.today.year
