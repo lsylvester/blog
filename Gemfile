@@ -1,7 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 
 ## Bundle edge rails:
-directory "/Users/lachlansylvester/apps3/rails", :glob => "{*/,}*.gemspec"
+directory "/Users/lachlansylvester/rails_tst/rails", :glob => "{*/,}*.gemspec"
 gem "rails", "3.0.pre"
 
 ## Bundle the gems you use:
