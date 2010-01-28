@@ -27,9 +27,5 @@ class Post < ActiveRecord::Base
   
   before_create :set_archive_month
   
-  scope :archive, select("archive_month, count(id) as posts_count").group("archive_month")
   
-  def month
-    archive_month
-  end
 end
