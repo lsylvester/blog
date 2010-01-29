@@ -2,7 +2,7 @@
 %html
   %head
     %meta{"http-equiv" => "Content-type", content: "text/html;charset=UTF-8"}
-    %title My Blog
+    %title= @weblog.name
     =# stylesheet_link_tag 'appliction'
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = javascript_include_tag 'jquery','application'
@@ -11,7 +11,7 @@
     - if admin?
       = link_to 'Logout', logout_path
     %header
-      %h1 My Blog
+      %h1= @weblog.name
     = yield
     %aside
       %section.archives

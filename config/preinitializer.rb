@@ -1,1 +1,1 @@
-require "#{Rails.root}/vendor/gems/environment"
+#require "#{Rails.root}/vendor/gems/environment"

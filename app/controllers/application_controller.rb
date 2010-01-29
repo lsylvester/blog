@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
   end
   
   before_filter :load_tags, :load_archives
+  
+  def load_weblog
+    @weblog = Weblog.first
+    redirect_to new_weblog_path unless @weblog
+  end
+  
+  before_filter :load_weblog
 end
