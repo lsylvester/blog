@@ -3,6 +3,7 @@
   %p= post.created_at
   = sanitize(textilize(post.content.to_s))
   .tags
+  
     - post.tags.each do |tag|
       = link_to tag.name, tag
   - if admin?

@@ -1,0 +1,18 @@
+!!! XML 
+%rss{ :version => "2.0", :"xmlns:atom" => "http://www.w3.org/2005/Atom" } 
+  %channel 
+    %title My Blog
+    %description
+    %link= posts_url(:format => 'rss')
+    %language en
+    %pubDate= Time.now.rfc2822
+    %atom:link{:href => posts_url(:format => 'rss'), :rel => "self", :type => "application/rss+xml"}
+    - @posts.each do |post|
+      %item 
+        %title= post.title
+        %description
+          = cdata_section(sanitize(textilize(post.content)))
+        %pubDate= post.created_at.rfc2822
+        %guid= post_url(post)
+        - post.tags.each do |tag|
+          %category= tag.name
