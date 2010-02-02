@@ -1,0 +1,22 @@
+<h1>Create a blog to get started</h1>
+<% form_for @weblog, :url => weblog_path do |f| %>
+  <%= error_messages_for @weblog %>
+  <%= error_messages_for @user %>
+  <div class='field'>
+    <%= f.label :name, "Name of your blog" %>
+    <%= f.text_field :name %>
+  </div>
+  <% fields_for @user do |u| %>
+    <div class='field'> 
+      <%= u.label :email, "Your Email Address" %>
+      <%= u.text_field :email %>
+    </div>
+    <div class='field'>
+      <%= u.label :password %>
+      <%= u.password_field :password %>
+    </div>
+  <% end %>
+  <div class='actions'>
+    <%= f.submit %>
+  </div>
+<% end %>

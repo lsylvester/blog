@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta "http-equiv"="Content-type" content="text/html;charset=UTF-8">
+      <title><%= @weblog.name %></title>
+      <%#= stylesheet_link_tag 'appliction' %>
+      <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+      <%= javascript_include_tag('jquery','application') %>
+  <body>
+    <% if admin? %>
+      <%= link_to 'Logout', logout_path %>
+    <% end %>
+    <header>
+      <h1><%= @weblog.name %></h1>
+    </header>
+    <%= yield %>
+    
+    <aside>
+      <section class="archives">
+        <h3>Archives</h3>
+        <ul>
+          <% @archives.each do |archive| %>
+            <li><%= link_to "#{archive.label} (#{archive.posts_count})", archive_path(archive.year, archive.month) %>
+          <% end %>
+        </ul>
+      </section>
+      <section class='tags'>
+        <h3>Tags</h3>
+        <ul>
+          <% @tags.each do |tag| %>
+            <li><%= link_to "#{tag.name} (#{tag.posts_count})", tag %></li>
+          <% end %>
+        </ul>
+      </section>
+    <footer>
+      © copyright
+      <%= Date.today.year %>
+    </footer>
+  </body>
+</html>
