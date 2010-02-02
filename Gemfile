@@ -3,7 +3,7 @@
 ## Bundle edge rails:
 directory "../rails", :glob => "{*/,}*.gemspec"
 gem "rails", "3.0.pre"
-
+# gem "authlogic"
 ## Bundle the gems you use:
 # gem "bj"
 # gem "hpricot", "0.6"
@@ -17,3 +17,4 @@ gem "rails", "3.0.pre"
 # end
 
 gem "haml"
+gem "RedCloth"

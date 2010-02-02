@@ -1,8 +1,9 @@
 - content_tag_for :article, post do
   %h2= link_to post.title, post
   %p= post.created_at
-  = post.content
+  = sanitize(textilize(post.content.to_s))
   .tags
+  
     - post.tags.each do |tag|
       = link_to tag.name, tag
   - if admin?
