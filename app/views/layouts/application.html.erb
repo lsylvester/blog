@@ -13,6 +13,11 @@
     <header>
       <h1><%= @weblog.name %></h1>
     </header>
+    <% flash.keys.each do |key| %>
+      <div class='flash <%= key %>'>
+        <%= flash[key] %>
+      </div>
+    <% end %>
     <%= yield %>
     
     <aside>
