@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def admin?
-    session[:admin]
+    session[:user_id]
   end
   
   helper_method :admin?
