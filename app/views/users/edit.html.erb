@@ -1,4 +1,4 @@
-<% form_for @user do |form| %>
+<% form_for @user, :url => admin? ? @user : user_path(@user.access_token) do |form| %>
   <div class='field'>
     <%= form.label :email %>
     <%= form.text_field :email %>

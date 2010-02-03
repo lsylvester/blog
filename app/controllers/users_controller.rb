@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :require_admin, except: [:edit, :update]
   
   def new
     @user = User.new
@@ -33,8 +34,9 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = admin? ? User.find(params[:id]) : User.find_by_access_token!(params[:id])
     if @user.update_attributes(params[:user])
+      session[:user_id] = @user.id unless admin?
       redirect_to @user, notice: "User was updated"
     else
       render 'edit'
