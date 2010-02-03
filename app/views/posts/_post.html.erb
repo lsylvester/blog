@@ -6,7 +6,7 @@
     <% post.tags.each do |tag| %>
       <%= link_to tag.name, tag %>
     <% end %>
-  </div?>
+  </div>
   <% if admin? %>
     <p>
       <%= link_to 'Edit', edit_post_path(post) %>

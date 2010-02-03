@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0; }
+  body .container {
+    width: 80%;
+    margin: 0 auto; }
+    body .container header {
+      padding: 1px;
+      background-color: #890409;
+      border-bottom: 5px solid #560000;
+      color: #FFF7D9;
+      display: block;
+      text-align: center; }
+    body .container aside {
+      width: 20%;
+      float: right; }
+    body .container footer {
+      display: block;
+      background-color: #EEE;
+      color: #555;
+      text-align: center;
+      padding: 5px; }
+  body nav.admin {
+    padding: 5px;
+    background-color: #222;
+    display: block;
+    text-align: right; }
+    body nav.admin a {
+      color: #DDD; }
