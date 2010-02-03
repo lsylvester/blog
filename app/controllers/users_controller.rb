@@ -24,7 +24,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    if admin?
+      @current_user = User.find(session[:user_id]) 
+      @user = User.find(params[:id])
+    else
+      @current_user = @user = User.find_by_access_token!(params[:id])
+    end
   end
   
   def update
