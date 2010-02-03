@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      ActionMailer::Base.default_url_options[:host] = request.host_with_port
       Notifier.invitation(@user).deliver
       redirect_to @user, notice: "User was created"
     else
