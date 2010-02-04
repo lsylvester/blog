@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title><%= @weblog.name %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+    <%= javascript_include_tag('jquery','application') %>
+  </head>
+  <body>
+    <% if admin? %>
+      <nav class='admin'>
+        <%= link_to 'Logout', logout_path %>
+      </nav>
+    <% end %>
+    <div class='container'>
+      <header>
+        <h1><%= @weblog.name %></h1>
+      </header>
+      <% flash.keys.each do |key| %>
+        <div class='flash <%= key %>'>
+          <%= flash[key] %>
+        </div>
+      <% end %>
+      <aside>
+        <section class="archives">
+          <h3>Archives</h3>
+          <ul>
+            <% @archives.each do |archive| %>
+              <li><%= link_to "#{archive.label} (#{archive.posts_count})", archive_path(archive.year, archive.month) %></li>
+            <% end %>
+          </ul>
+        </section>
+        <section class='tags'>
+          <h3>Tags</h3>
+          <ul>
+            <% @tags.each do |tag| %>
+              <li><%= link_to "#{tag.name} (#{tag.posts_count})", tag %></li>
+            <% end %>
+          </ul>
+        </section>
+      </aside>
+      <%= yield %>
+      <footer>
+        © copyright
+        <%= Date.today.year %>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -15,7 +15,6 @@ end
 
 require 'rails/all'
 Bundler.require_env
-
 # To pick the frameworks you want, remove 'require "rails/all"'
 # and list the framework railties that you want:
 #

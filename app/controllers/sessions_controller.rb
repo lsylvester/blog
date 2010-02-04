@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
   end
   
   def create
-    if params[:session][:password] == 'secret'
-      session[:admin] = true
+    @user = User.find_by_email(params[:session][:email])
+    if @user.crypted_password == params[:session][:password]
+      session[:user_id] = @user.id
       redirect_to root_path, notice: "You have logged in"
     else
       flash.now[:error] = 'Incorrect password'
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session[:admin] = nil
+    session[:user_id] = nil
     redirect_to root_path, notice: "You have logged out"
   end
 

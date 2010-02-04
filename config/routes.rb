@@ -6,6 +6,7 @@ Blog::Application.routes.draw do |map|
   end
   resources :tags
   resource :weblog
+  resources :users
   root to: "posts#index"
   get '/login', to: "sessions#new", as: 'login'
   post '/login', to: "sessions#create"

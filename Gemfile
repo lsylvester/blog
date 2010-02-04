@@ -7,7 +7,7 @@ gem "rails", "3.0.pre"
 ## Bundle the gems you use:
 # gem "bj"
 # gem "hpricot", "0.6"
-# gem "sqlite3-ruby", :require_as => "sqlite3"
+gem "sqlite3", :require_as => "sqlite3"
 # gem "aws-s3", :require_as => "aws/s3"
 
 ## Bundle gems used only in certain environments:
@@ -18,3 +18,4 @@ gem "rails", "3.0.pre"
 
 gem "haml"
 gem "RedCloth"
+gem 'bcrypt-ruby', :require_as => "bcrypt"
